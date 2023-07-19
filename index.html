@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Add styles for the floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      height: 80px;
+      width: 80px;
+      background-image: url('heart.png'); /* Replace 'heart.png' with the path to your heart image */
+      background-repeat: no-repeat;
+      background-size: contain;
+      animation: floatHeart 3s infinite ease-in-out;
+    }
+
+    .input-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-container input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid red;
+    outline: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    color: red;
+    width: 300px;
+  }
+  
+  .input-container input:focus {
+    border-bottom: 2px solid #ff7f7f;
+  }
+  
+  .input-container label {
+    position: absolute;
+    pointer-events: none;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    color: red;
+    transition: 0.2s ease all;
+  }
+  
+  .input-container input:focus ~ label,
+  .input-container input:valid ~ label {
+    top: -15px;
+    font-size: 14px;
+    color: #ff7f7f;
+  }
+
+    /* Define the animation for the floating hearts */
+    @keyframes floatHeart {
+      0% { transform: translate(0, 0); opacity: 1; }
+      50% { opacity: 0; }
+      100% { transform: translate(0, -100vh); opacity: 1; }
+    }
+
+    /* Add styles for the cute and whimsical website */
+    body {
+      background-color: #fce4ec;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .big-heart-container {
+      text-align: center;
+      animation: showHeartContainer 2s;
+    }
+
+    .big-heart {
+      display: inline-block;
+      height: 300px;
+      width: 300px;
+      background-image: url('heart.png'); /* Replace 'big_heart.png' with the path to your big heart image */
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      animation: showBigHeart 3s;
+    }
+
+    #listContainer {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      animation: showListContainer 3s;
+      border-radius: 25px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: showListItems 5s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes showHeartContainer {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes showBigHeart {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes showListContainer {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes showListItems {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Typewriter effect animation */
+    li {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: typewriter 11s forwards;
+      animation-delay: calc(var(--delay) * 10s);
+      font-family: cursive;
+      display: flex;
+      align-items: center;
+    }
+
+    @keyframes typewriter {
+      to {
+        width: 100%;
+      }
+    }
+
+    .number {
+      font-size: 20px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* Slideshow animation */
+    #slideshowContainer {
+      display: none;
+      animation: showSlideshowContainer 2s;
+    }
+
+    @keyframes showSlideshowContainer {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .slideshow {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+      overflow: hidden;
+      animation: showSlideshow 3s;
+    }
+
+    .slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="validationContainer" style="text-align: center;">
+    <div class="input-container">
+      Enter your name
+      <input type="text" id="nameInput" />
+      <button onclick="validateName()">Submit</button>
+    </div>
+  </div>
+
+  <div class="big-heart-container" id="bigHeartContainer" style="display: none;" onclick="showListAndHideHeart()">
+    <div class="big-heart"></div>
+  </div>
+
+  <div id="listContainer" style="display: none;">
+    <h2>A List of 19 Reasons I Love You</h2>
+    <ul>
+      <li style="--delay: 0;"><span class="number">1.</span>Your smile brightens up my world every day.</li>
+      <li style="--delay: 1;"><span class="number">2.</span>Your kindness and compassion inspire me to be a better person.</li>
+      <li style="--delay: 2;"><span class="number">3.</span>The way you listen to me makes me feel heard and understood.</li>
+      <li style="--delay: 3;"><span class="number">4.</span>Your intelligence and curiosity fascinate me endlessly.</li>
+      <li style="--delay: 4;"><span class="number">5.</span>Your laughter is music to my ears, and it fills my heart with joy.</li>
+      <li style="--delay: 5;"><span class="number">6.</span>Your touch sends magical shivers down my spine.</li>
+      <li style="--delay: 6;"><span class="number">7.</span>Your support and encouragement make me believe in myself more than ever.</li>
+      <li style="--delay: 7;"><span class="number">8.</span>Your creativity and imagination make our world more enchanting.</li>
+      <li style="--delay: 8;"><span class="number">9.</span>In your warm embrace, I find comfort and a sense of belonging.</li>
+      <li style="--delay: 9;"><span class="number">10.</span>You challenge me to grow and become the best version of myself.</li>
+      <li style="--delay: 10;"><span class="number">11.</span>Your resilience and strength amaze me, my brave warrior.</li>
+      <li style="--delay: 11;"><span class="number">12.</span>Your passion and enthusiasm for life make everything more delightful.</li>
+      <li style="--delay: 12;"><span class="number">13.</span>You make me feel loved and cherished with your sweet gestures.</li>
+      <li style="--delay: 13;"><span class="number">14.</span>Your loyalty and commitment make my heart feel safe and secure.</li>
+      <li style="--delay: 14;"><span class="number">15.</span>Your beauty, inside and out, is a marvel that captivates me.</li>
+      <li style="--delay: 15;"><span class="number">16.</span>You find joy in the little things, and they become magical in your presence.</li>
+      <li style="--delay: 16;"><span class="number">17.</span>Your uniqueness and authenticity make you a rare treasure.</li>
+      <li style="--delay: 17;"><span class="number">18.</span>Your wisdom and insights illuminate my path in this journey of love.</li>
+      <li style="--delay: 18;"><span class="number">19.</span>Most of all, I love the way you love me—purely, tenderly, and forever.</li>
+      <li style="--delay: 19;"><span class="number">19.</span><button onclick="removeListAndShowSlideshow()">Click Me</button></li>
+    </ul>
+  </div>
+
+  <div id="slideshowContainer">
+    <div class="slideshow">
+      <img src="test.jpg" alt="Slideshow Image 1" class="active" />
+      <img src="test1.jpg" alt="Slideshow Image 2" />
+      <img src="test2.jpg" alt="Slideshow Image 3" />
+    </div>
+  </div>
+
+  <audio id="backgroundMusic" src="music.mp3" loop></audio>
+
+  <script>
+    function playMusic() {
+      var audio = document.getElementById("backgroundMusic");
+      audio.volume = 0.2;
+      audio.play();
+    }
+
+    function validateName() {
+      var nameInput = document.getElementById("nameInput").value.trim().toLowerCase();
+      if (nameInput === "alex") {
+        document.getElementById("validationContainer").style.display = "none";
+        document.getElementById("bigHeartContainer").style.display = "block";
+        playMusic();
+      } else {
+        alert("Invalid name. Only Alex is allowed.");
+      }
+    }
+
+    // Function to show the list and start the floating hearts animation
+    function showListAndHideHeart() {
+      document.getElementById("listContainer").style.display = "block";
+      document.getElementById("bigHeartContainer").style.display = "none";
+      createFloatingHearts();
+      showLoveMessage();
+    }
+
+    // Function to create the floating hearts
+    function createFloatingHearts() {
+      var heartsContainer = document.createElement("div");
+      heartsContainer.id = "heartsContainer";
+      document.body.appendChild(heartsContainer);
+      for (var i = 0; i < 30; i++) {
+        var heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.bottom = Math.random() * 80 + "px";
+        heart.style.animationDelay = Math.random() * 3 + "s";
+        heartsContainer.appendChild(heart);
+      }
+    }
+
+    // Function to show the love message
+    function showLoveMessage() {
+      var loveMessage = document.getElementById("loveMessage");
+      loveMessage.style.display = "block";
+      loveMessage.style.fontSize = "50px";
+      loveMessage.style.color = "red";
+      loveMessage.style.textAlign = "center";
+      loveMessage.style.animation = "growLoveMessage 3s";
+      setTimeout(removeListAndShowSlideshow, 5000); // After 5 seconds, remove the list and show the slideshow
+    }
+
+    // Function to remove the list and show the slideshow
+    function removeListAndShowSlideshow() {
+      document.getElementById("listContainer").style.display = "none";
+      document.getElementById("slideshowContainer").style.display = "block";
+      startSlideshow();
+    }
+
+    // Function to start the slideshow
+    function startSlideshow() {
+      var slideshowImages = document.querySelectorAll('.slideshow img');
+      var activeImageIndex = 0;
+
+      setInterval(function() {
+        slideshowImages[activeImageIndex].classList.remove('active');
+        activeImageIndex = (activeImageIndex + 1) % slideshowImages.length;
+        slideshowImages[activeImageIndex].classList.add('active');
+      }, 3000); // Change image every 3 seconds
+    }
+  </script>
+</body>
+</html>
